@@ -628,6 +628,14 @@ komoot:
   Icon:
     Simpleicons: komoot
 
+# 073: Komoot
+komoot:
+  Weight: 73
+  Prefix: https://www.komoot.de/user/
+  Title: Komoot
+  Icon:
+    Simpleicons: komoot
+
 # Phone
 phone:
   Weight: 98
