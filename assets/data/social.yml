@@ -620,6 +620,14 @@ threads:
   Icon:
     Class: fab fa-threads fa-fw
 
+# 073: Komoot
+komoot:
+  Weight: 73
+  Prefix: https://www.komoot.de/user/
+  Title: Komoot
+  Icon:
+    Simpleicons: komoot
+
 # Phone
 phone:
   Weight: 98
