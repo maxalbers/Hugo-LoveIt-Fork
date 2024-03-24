@@ -138,17 +138,17 @@ The rendered output looks like this:
 
 ## 7 tweet
 
-[Documentation of `tweet`](https://gohugo.io/content-management/shortcodes#tweet)
+[Documentation of `twitter` or `tweet`](https://gohugo.io/content-management/shortcodes/#twitter)
 
 Example `tweet` input:
 
 ```markdown
-{{</* tweet 917359331535966209 */>}}
+{{</* tweet user="SanDiegoZoo" id="1453110110599868418" */>}}
 ```
 
 The rendered output looks like this:
 
-{{< tweet 917359331535966209 >}}
+{{< tweet user="SanDiegoZoo" id="1453110110599868418" >}}
 
 ## 8 vimeo
 
