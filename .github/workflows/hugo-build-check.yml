@@ -1,0 +1,53 @@
+# Update npm, compile, build, check for errors
+name: Hugo build workflow
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+      
+      - name: Install npm dependencies
+        run: "npx npm-force-resolutions"
+
+      - name: Run babel
+        run: "npx babel src/js --out-file assets/js/theme.js"
+
+      - name: Build
+        run: |
+          npm run babel && \
+          browserify src/lib/lunr/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env && \\
+          hugo -v --source=exampleSite --themesDir ../.. --gc
+
+      - name: Check HTML
+        run: "htmlproofer exampleSite/public --check-html --allow-hash-href --empty-alt-ignore --disable-external"
