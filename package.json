@@ -1,7 +1,7 @@
 {
-  "name": "loveit-src",
-  "version": "0.2.0",
-  "description": "LoveIt theme source file",
+  "name": "loveit-fork-src",
+  "version": "0.2.1",
+  "description": "LoveIt-Fork theme source file",
   "private": true,
   "devDependencies": {
     "@algolia/cli": "^4.0.8",
@@ -27,16 +27,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dillonzq/LoveIt.git"
+    "url": "git+https://github.com/maxalbers/Hugo-LoveIt-Fork.git"
   },
   "keywords": [
     "hugo",
     "theme"
   ],
-  "author": "Dillon",
+  "author": "maxalbers, Dillon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dillonzq/LoveIt/issues"
+    "url": "https://github.com/maxalbers/Hugo-LoveIt-Fork/issues"
   },
-  "homepage": "https://github.com/dillonzq/LoveIt#readme"
+  "homepage": "https://github.com/maxalbers/Hugo-LoveIt-Fork#readme"
 }
