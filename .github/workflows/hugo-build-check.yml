@@ -39,9 +39,10 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      # Fix project rename from "LoveIt" to "Hugo-LoveIt-Fork"
       - run: |
-          ln -s "$(pwd)" LoveIt &&
-          ls LoveIt -l
+          ln -s "$(pwd)" ../LoveIt &&
+          ls ../ -al
 
       # Run the scripts which are defined in package.json using the npm run command
       - name: Run scripts
