@@ -21,8 +21,7 @@ defaults:
     shell: bash
 
 jobs:
-  # Build job
-  build:
+  hugo-build-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
