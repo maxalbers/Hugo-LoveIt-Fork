@@ -46,8 +46,7 @@ jobs:
           npm run preinstall && \
           npm run babel && \
           npm run build-lunr-segmentit && \
-          npm run build && \
-          
+          npm run build          
 
       - name: Run babel-cli
         run: "npx babel-cli src/js --out-file assets/js/theme.js"
