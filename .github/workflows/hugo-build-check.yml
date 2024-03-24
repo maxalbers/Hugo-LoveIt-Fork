@@ -39,6 +39,10 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - run: |
+          ln -s "$(pwd)" LoveIt &&
+          ls LoveIt -l
+
       # Run the scripts which are defined in package.json using the npm run command
       - name: Run scripts
         run: |
@@ -46,13 +50,7 @@ jobs:
           npm run preinstall && \
           npm run babel && \
           npm run build-lunr-segmentit && \
-          npm run build          
-
-      - name: Run babel-cli
-        run: "npx babel-cli src/js --out-file assets/js/theme.js"
-
-      - name: Build
-        run: "npm run start-production"
+          npm run build
 
       - name: Check HTML
         run: "npm run check"
