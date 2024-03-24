@@ -30,24 +30,30 @@ jobs:
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
+          
+      - uses: actions/setup-node@v4
+        
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
-      
-      - name: Install npm dependencies
-        run: "npx npm-force-resolutions"
+
+      # Run the scripts which are defined in package.json using the npm run command
+      - name: Run scripts
+        run: |
+          npm ci && \
+          npm run preinstall && \
+          npm run babel && \
+          npm run build-lunr-segmentit && \
+          npm run build && \
+          
 
       - name: Run babel-cli
         run: "npx babel-cli src/js --out-file assets/js/theme.js"
 
       - name: Build
-        run: |
-          npm run babel-cli && \
-          browserify src/lib/lunr/lunr.segmentit.js -o assets/lib/lunr/lunr.segmentit.js -t babelify --presets @babel/preset-env && \\
-          hugo -v --source=exampleSite --themesDir ../.. --gc
+        run: "npm run start-production"
 
       - name: Check HTML
-        run: "htmlproofer exampleSite/public --check-html --allow-hash-href --empty-alt-ignore --disable-external"
+        run: "npm run check"
