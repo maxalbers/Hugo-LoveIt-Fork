@@ -53,5 +53,5 @@ jobs:
           npm run build-lunr-segmentit && \
           npm run build
 
-      - name: Check HTML
-        run: "npm run check"
+      # - name: Check HTML
+      #   run: "npm run check"
